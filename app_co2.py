@@ -1,6 +1,6 @@
 from pdb import line_prefix
 import streamlit as st
-import geemap.foliumap as geemap
+import geemap
 #from streamlit_metrics import metric, metric_row
 from streamlit_ace import st_ace
 import pandas as pd

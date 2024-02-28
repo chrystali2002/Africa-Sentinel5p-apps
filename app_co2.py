@@ -14,8 +14,8 @@ m.add_basemap("OpenTopoMap")
 m.add_basemap("SATELLITE")
 m.to_streamlit(height=500)
 
-collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')
-  .select('CO_column_number_density')
+collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
+  .select('CO_column_number_density')\
   .filterDate('2019-06-01', '2019-06-11')
 
 band_viz = {

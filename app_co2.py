@@ -16,7 +16,6 @@ st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='ðŸ›
 st.subheader('Live Monitoring of CO2 in Africa')
 
 
-with st.expander("See source code"):
-    with st.echo():
-        m = geemap.Map()
-m.to_streamlit(height=700)
+m = geemap.Map()
+m.add_basemap("OpenTopoMap")
+m.to_streamlit(height=500)

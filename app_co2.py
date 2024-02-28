@@ -18,10 +18,5 @@ st.subheader('Live Monitoring of CO2 in Africa')
 
 with st.expander("See source code"):
     with st.echo():
-        m = leafmap.Map()
-        m.split_map(
-            left_layer='ESA WorldCover 2020 S2 FCC', right_layer='ESA WorldCover 2020'
-        )
-        m.add_legend(title='ESA Land Cover', builtin_legend='ESA_WorldCover')
-
+        m = geemap.Map()
 m.to_streamlit(height=700)

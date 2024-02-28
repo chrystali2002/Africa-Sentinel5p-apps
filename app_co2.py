@@ -9,5 +9,5 @@ st.subheader('Live Monitoring of CO2 in Africa')
 
 
 m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
-m.add_basemap("OpenTopoMap")
+m.add_basemap("SATELLITE")
 m.to_streamlit(height=500)

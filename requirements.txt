@@ -1,2 +1,6 @@
 geemap
 streamlit
+json
+geojson
+pandas
+geopandas

@@ -1,4 +1,5 @@
 import ee
+import json
 import streamlit as st
 import geemap.foliumap as geemap
 
@@ -7,6 +8,15 @@ st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='ðŸ›
 
 # temporal header
 st.subheader('Live Monitoring of CO2 in Africa')
+
+json_data = st.secrets["json_data"]
+service_account = st.secrets["service_account"]
+
+
+json_object = json.loads(json_data, strict=False)
+json_object = json.dumps(json_object)
+credentials = ee.ServiceAccountCredentials(service_account, key_data=json_object)
+ee.Initialize(credentials)
 
 
 m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)

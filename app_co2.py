@@ -30,8 +30,8 @@ collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
 
 band_viz = {
   min: 0,
-  max: 0.05,
-  palette: ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
+  max: 0.05
 }
 
+#palette: ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 m.addLayer(collection.mean(), band_viz, 'S5P CO')

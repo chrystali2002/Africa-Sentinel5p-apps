@@ -1,7 +1,8 @@
 import ee
 import json
 import streamlit as st
-import geemap.foliumap as geemap
+# import geemap.foliumap as geemap
+import geemap
 
 # setting webpage title and icon
 st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='🛰️', layout='wide')
@@ -20,8 +21,8 @@ ee.Initialize(credentials)
 
 
 m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
-m.add_basemap("OpenTopoMap")
-m.add_basemap("SATELLITE")
+#m.add_basemap("OpenTopoMap")
+#m.add_basemap("SATELLITE")
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
@@ -38,4 +39,5 @@ band_viz = {
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
 m.add_colormap(vis_params=band_viz, label='CO concentrations', layer_name='Colorbar',position=(0,0),
                vmin=0, vmax=0.5)
+m
 m.to_streamlit(height=500)

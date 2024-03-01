@@ -43,7 +43,7 @@ band_viz = {
 }
 
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
-m.addLayer(africa, {}, "ROI")
+m.add_shapefile(shp_path,'Africa')
 # m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
 #                background_color='white',vmin=0, vmax=0.5)
 m.add_colormap(vis_params=band_viz, label='CO concentrations',

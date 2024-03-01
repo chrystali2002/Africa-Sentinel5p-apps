@@ -11,6 +11,19 @@ st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='ðŸ›
 
 # temporal header
 st.subheader('Live Monitoring of CO2 in Africa')
+st.write("""
+This dataset provides near real-time high-resolution imagery of CO concentrations.
+
+Carbon monoxide (CO) is an important atmospheric trace gas for understanding tropospheric chemistry. 
+         In certain urban areas, it is a major atmospheric pollutant. Main sources of CO are combustion 
+         of fossil fuels, biomass burning, and atmospheric oxidation of methane and other hydrocarbons. 
+         Whereas fossil fuel combustion is the main source of CO at northern mid-latitudes, the oxidation of 
+         isoprene and biomass burning play an important role in the tropics. TROPOMI on the Sentinel 5 Precursor 
+         (S5P) satellite observes the CO global abundance exploiting clear-sky and cloudy-sky Earth radiance 
+         measurements in the 2.3 Î¼m spectral range of the shortwave infrared (SWIR) part of the solar spectrum. 
+         TROPOMI clear sky observations provide CO total columns with sensitivity to the tropospheric boundary layer. 
+         For cloudy atmospheres, the column sensitivity changes according to the light path.
+""")
 
 # initializing earth engine credentials
 json_data = st.secrets["json_data"]
@@ -37,7 +50,7 @@ study_feature = geemap.geojson_to_ee(json_data)
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
   .select('CO_column_number_density')\
-  .filterDate('2019-06-01', '2019-06-11')\
+  .filterDate('2023-06-01', '2023-06-11')\
   .filterBounds(study_feature)
 
 # clip the collection to the Africa plate

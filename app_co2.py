@@ -28,6 +28,7 @@ m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
 m.add_basemap("SATELLITE")
 
 # getting Africa shapefile
+shp_path = 'africa_outline.geojson'
 with open(shp_path) as f:
   json_data = json.load(f)
 

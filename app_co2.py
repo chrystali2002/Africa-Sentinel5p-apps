@@ -22,7 +22,7 @@ ee.Initialize(credentials)
 m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
 m.add_basemap("OpenTopoMap")
 m.add_basemap("SATELLITE")
-m.to_streamlit(height=500)
+
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
   .select('CO_column_number_density')\
@@ -35,3 +35,4 @@ band_viz = {
 
 #palette: ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
+m.to_streamlit(height=500)

@@ -28,14 +28,15 @@ m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
 m.add_basemap("SATELLITE")
 
 # getting Africa shapefile
-shp_path = 'Africa_shp/Africa_Boundaries.shp'
-africa = geemap.shp_to_ee(shp_path)
-africa_json = 'africa_outline.geojson'
+# shp_path = 'Africa_shp/Africa_Boundaries.shp'
+# africa = geemap.shp_to_ee(shp_path)
+# africa2 = geemap.shp
+# africa_json = 'africa_outline.geojson'
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
   .select('CO_column_number_density')\
-  .filterDate('2019-06-01', '2019-06-11').filterBounds(africa)
+  .filterDate('2019-06-01', '2019-06-11')
 
 band_viz = {
   min: 0,
@@ -44,7 +45,7 @@ band_viz = {
 }
 
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
-m.add_geojson(africa_json,'Africa')
+# m.add_geojson(africa_json,'Africa')
 # m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
 #                background_color='white',vmin=0, vmax=0.5)
 m.add_colormap(vis_params=band_viz, label='CO concentrations',

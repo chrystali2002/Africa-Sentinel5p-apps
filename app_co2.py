@@ -1,7 +1,7 @@
 import ee
 import json
 import streamlit as st
-import geemap.foliumap as geemap
+import geemap
 
 # setting webpage title and icon
 st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='🛰️', layout='wide')
@@ -36,4 +36,5 @@ band_viz = {
 
 #palette: ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
+m.add_colorbar()
 m.to_streamlit(height=500)

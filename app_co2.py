@@ -45,5 +45,5 @@ m.addLayer(collection.mean(), band_viz, 'S5P CO')
 # m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
 #                background_color='white',vmin=0, vmax=0.5)
 m.add_colormap(vis_params=band_viz, label='CO concentrations',
-               width=2.5, height=0.2,position=(70,7))
+               )
 m.to_streamlit(height=500)

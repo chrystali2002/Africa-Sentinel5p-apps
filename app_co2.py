@@ -1,6 +1,7 @@
 import ee
 import json
 import streamlit as st
+import geopandas as gpd
 import geemap.foliumap as geemap
 import geemap as geemap_r
 
@@ -25,7 +26,7 @@ m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
 m.add_basemap("SATELLITE")
 
 # getting Africa shapefile
-africa = geemap_r.shp_to_ee('Africa.geojson')
+#africa = geemap_r.shp_to_ee('Africa.geojson')
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\

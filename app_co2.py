@@ -27,9 +27,9 @@ m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
 m.add_basemap("SATELLITE")
 
 # getting Africa shapefile
-gdf = gpd.read_file('Africa.geojson')
-africa = geemap.gdf_to_ee(gdf)
 crs = "epsg:4326"
+gdf = gpd.read_file('Africa.geojson', crs)
+africa = geemap.gdf_to_ee(gdf)
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\

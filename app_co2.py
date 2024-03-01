@@ -42,6 +42,7 @@ m.add_basemap("SATELLITE")
 
 # getting Africa shapefile
 shp_path = 'africa_outline.geojson'
+
 with open(shp_path) as f:
   json_data = json.load(f)
 
@@ -60,7 +61,7 @@ africa_col = collection.mean().clip(
 
 band_viz = {
   min: 0,
-  max: 0.05,
+  max: 1,
   'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 }
 

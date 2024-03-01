@@ -43,7 +43,7 @@ band_viz = {
   'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 }
 
-m.addLayer(collection.mean(), band_viz, 'S5P CO')
+m.addLayer(collection.mean().clip(africa), band_viz, 'S5P CO')
 m.add_geojson(africa_json,'Africa')
 # m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
 #                background_color='white',vmin=0, vmax=0.5)

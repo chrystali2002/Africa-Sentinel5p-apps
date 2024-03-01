@@ -2,6 +2,7 @@ import ee
 import json
 import streamlit as st
 import geemap.foliumap as geemap
+import geemap as geemap_r
 
 # setting webpage title and icon
 st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='🛰️', layout='wide')
@@ -9,19 +10,22 @@ st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='�
 # temporal header
 st.subheader('Live Monitoring of CO2 in Africa')
 
+# initializing earth engine credentials
 json_data = st.secrets["json_data"]
 service_account = st.secrets["service_account"]
-
 
 json_object = json.loads(json_data, strict=False)
 json_object = json.dumps(json_object)
 credentials = ee.ServiceAccountCredentials(service_account, key_data=json_object)
 ee.Initialize(credentials)
 
-
+# designing the app to focus on Africa
 m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
-m.add_basemap("OpenTopoMap")
+#m.add_basemap("OpenTopoMap")
 m.add_basemap("SATELLITE")
+
+# getting Africa shapefile
+africa = geemap_r.shp_to_ee('Africa.geojson')
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
@@ -36,6 +40,7 @@ band_viz = {
 
 #palette: ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
+m.addLayer(africa, {}, 'Africa')
 # m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
 #                background_color='white',vmin=0, vmax=0.5)
 m.add_colormap(vis_params=band_viz, label='CO concentrations',

@@ -34,4 +34,4 @@ band_viz = {
   palette: ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 }
 
-#m.addLayer(collection.mean(), band_viz, 'S5P CO')
+m.addLayer(collection.mean(), band_viz, 'S5P CO')

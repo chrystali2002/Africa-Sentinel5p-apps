@@ -3,6 +3,7 @@ import json
 import streamlit as st
 import geopandas as gpd
 import geemap.foliumap as geemap
+import geopandas as gpd
 import geemap as geemap_r
 
 # setting webpage title and icon
@@ -26,7 +27,8 @@ m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
 m.add_basemap("SATELLITE")
 
 # getting Africa shapefile
-africa = geemap_r.gdf_to_ee('Africa.geojson')
+gdf = gpd.read_file('Africa.geojson')
+africa = geemap.gdf_to_ee(gdf)
 crs = "epsg:4326"
 
 

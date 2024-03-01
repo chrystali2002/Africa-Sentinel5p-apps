@@ -35,7 +35,7 @@ africa_json = 'africa_outline.geojson'
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
   .select('CO_column_number_density')\
-  .filterDate('2019-06-01', '2019-06-11').clipToCollection(africa)
+  .filterDate('2019-06-01', '2019-06-11').filterBounds(africa)
 
 band_viz = {
   min: 0,

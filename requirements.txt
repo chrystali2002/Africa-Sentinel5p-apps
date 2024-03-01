@@ -1,5 +1,5 @@
-geemap
 streamlit
+geemap=0.32.0
 Fiona==1.8.21
 folium==0.12.1.post1
 geojson==2.5.0

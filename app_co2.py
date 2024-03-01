@@ -26,7 +26,8 @@ m = geemap.Map(center=[-2.635789, 24.433594], zoom=3)
 m.add_basemap("SATELLITE")
 
 # getting Africa shapefile
-#africa = geemap_r.shp_to_ee('Africa.geojson')
+africa = geemap_r.gdf_to_ee('Africa.geojson')
+crs = "epsg:4326"
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
@@ -40,7 +41,7 @@ band_viz = {
 }
 
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
-#m.addLayer(africa, {}, 'Africa')
+m.add_gdf(africa, "ROI")
 # m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
 #                background_color='white',vmin=0, vmax=0.5)
 m.add_colormap(vis_params=band_viz, label='CO concentrations',

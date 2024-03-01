@@ -38,6 +38,6 @@ band_viz = {
 #palette: ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 m.addLayer(collection.mean(), band_viz, 'S5P CO')
 # m.add_colormap(vis_params=band_viz, label='CO concentrations', layer_name='Colorbar',position=(0,0),
-               vmin=0, vmax=0.5)
+#               vmin=0, vmax=0.5)
 m
 m.to_streamlit(height=500)

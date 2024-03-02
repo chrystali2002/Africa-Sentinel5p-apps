@@ -71,5 +71,5 @@ m.addLayer(africa_col, band_viz, 'S5P CO')
 #                background_color='white',vmin=0, vmax=0.5)
 m.add_colormap(vis_params=band_viz, label='CO concentrations',
                width=2.5, height=0.2, vmax=0.05, vmin=0.0)
-m.addLayer(study_feature, {}, 'Africa')
+#m.addLayer(study_feature, {}, 'Africa')
 m.to_streamlit(height=600, width=700)

@@ -45,6 +45,20 @@ with open(shp_path) as f:
 # convert to ee data as study_feature
 study_feature = geemap.geojson_to_ee(json_data)
 
+
+#---------------------------------------------------------------------------------------------#
+# Designing the columns and shape of the web application
+st.write("""##### Select the gases to visualize""")
+gas = st.selectbox('', ['Concentrations of Carbon monoxide (CO)',
+                        'Concentrations of water vapor', 
+                        'UV Aerosol Index ', 
+                        'Formaldehyde concentration', 
+                        'Total, tropospheric, and stratospheric nitrogen dioxide concentration', 
+                        'Total atmospheric column ozone concentration', 
+                        'Atmospheric sulphur dioxide (SO₂) concentration',
+                        'Atmospheric methane (CH₄) concentration'])
+
+
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
   .select('CO_column_number_density')\
   .filterDate('2023-06-01', '2023-06-11')\
@@ -64,7 +78,7 @@ band_viz = {
 m.addLayer(study_feature, {}, 'Africa')
 m.addLayer(africa_col, band_viz, 'S5P CO')
 #m.add_geojson(africa_json,'Africa')
-m.add_colorbar(band_viz, label=f'CO concentrations ($mol/m^2$)', layer_name='Colorbar',position='bottomright',
+m.add_colorbar(band_viz, label='CO concentrations (mol/m^2)', layer_name='Colorbar',position='bottomright',
                background_color='white', extend='both')
 
 #m.add_colormap(vis_params=band_viz, label='CO concentrations',

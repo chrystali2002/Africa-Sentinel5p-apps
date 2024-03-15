@@ -68,7 +68,9 @@ with my_col2:
 
 
 # Visualization
-st.subheader(f"Plotting {month} The Actual and predicted trend")
+st.subheader(f"Interactive Map of showing the {gas} in Africa")
+st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom into the map and use the colorbar to get the 
+         concentration value of the gases. Also, feel free to select any other year and month of your choice to visualize.')
 
 
 

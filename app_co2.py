@@ -80,7 +80,7 @@ gas_dict = {
   'Concentrations of Carbon monoxide (CO)': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 
                                              'band': 'CO_column_number_density',
                                              'min': 0,
-                                             'max': 0.05
+                                             'max': 0.05,
                                              'layer_name': 'S5P CO'},
   'Concentrations of water vapor': {}, 
   'UV Aerosol Index': {}, 

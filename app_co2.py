@@ -75,6 +75,24 @@ st.subheader(f"Interactive Map of showing the {gas} in Africa")
 st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom into the map and use the colorbar to get the \
          concentration value of the gases. Also, feel free to select any other year and month of your choice to visualize.')
 
+# creating a nexted dictionary that contains all the information for each of the gases
+gas_dict = {
+  'Concentrations of Carbon monoxide (CO)': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 
+                                             'band': 'CO_column_number_density',
+                                             'min': 0,
+                                             'max': 0.05
+                                             'layer_name': 'S5P CO'},
+  'Concentrations of water vapor': {}, 
+  'UV Aerosol Index': {}, 
+  'Concentrations of Formaldehyde': {}, 
+  'Concentrations of total, tropospheric, and stratospheric nitrogen dioxide': {}, 
+  'Concentrations of total atmospheric column ozone': {}, 
+  'Concentrations of  atmospheric sulphur dioxide (SO₂)': {},
+  'Concentrations of atmospheric methane (CH₄)': {}
+}
+
+
+
 # catch an error, just incase the user enters the date in the future.
 today = datetime.date.today()  # gets today's date
 user_seletion = datetime.date(year, int(month_dict[month]), 1)
@@ -82,9 +100,12 @@ user_seletion = datetime.date(year, int(month_dict[month]), 1)
 if user_seletion > today :
   st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')
 
+else:
+  pass
 
-collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
-  .select('CO_column_number_density')\
+
+collection = ee.ImageCollection(gas_dict[gas]['col'])\
+  .select(gas_dict[gas]['band'])\
   .filterDate('2023-06-01', '2023-06-11')\
   .filterBounds(study_feature)
 

@@ -79,10 +79,10 @@ st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom
 print(1234)
 print(month_dict[month])
 today = datetime.date.today()  # gets today's date
-user_seletion = datetime.time(year, int(month_dict[month]), 1)
+# user_seletion = datetime.time(year, int(month_dict[month]), 1)
 
-if user_seletion > today :
-  st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')
+# if user_seletion > today :
+#   st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\

@@ -57,14 +57,14 @@ africa_col = collection.mean().clip(
 
 band_viz = {
   'min': 0,
-  'max': .1,
+  'max': 0.05,
   'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 }
 
 m.addLayer(study_feature, {}, 'Africa')
 m.addLayer(africa_col, band_viz, 'S5P CO')
 #m.add_geojson(africa_json,'Africa')
-m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
+m.add_colorbar(band_viz, label=f'CO concentrations ($mol/m^2$)', layer_name='Colorbar',position='bottomright',
                background_color='white', extend='both')
 
 #m.add_colormap(vis_params=band_viz, label='CO concentrations',

@@ -78,7 +78,7 @@ st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom
 # catch an error, just incase the user enters the date in the future.
 st.write(int(month_dict[month]))
 today = datetime.date.today()  # gets today's date
-user_seletion = datetime.time(year, int(month_dict[month]), 1)
+user_seletion = datetime.time(int(year), int(month_dict[month]), 1)
 
 if user_seletion > today :
   st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')

@@ -56,7 +56,7 @@ africa_col = collection.mean().clip(
 )
 
 band_viz = {
-  'min': -279,
+  'min': 0,
   'max': 4.64,
   'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 }

@@ -67,6 +67,10 @@ with my_col2:
                                          'August', 'September', 'October', 'November', 'December'])
 
 
+# Visualization
+st.subheader(f"Plotting {month} The Actual and predicted trend")
+
+
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\
   .select('CO_column_number_density')\

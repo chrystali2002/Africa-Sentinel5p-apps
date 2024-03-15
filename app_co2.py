@@ -36,7 +36,7 @@ ee.Initialize(credentials)
 
 
 # designing the app to focus on Africa
-m = geemap.Map(center=[-2.635789, 24.433594], zoom=4)
+m = geemap.Map(center=[-2.635789, 24.433594], zoom=3.2)
 #m.add_basemap("OpenTopoMap")
 m.add_basemap("SATELLITE")
 

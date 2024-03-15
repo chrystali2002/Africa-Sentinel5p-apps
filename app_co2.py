@@ -76,6 +76,7 @@ st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom
          concentration value of the gases. Also, feel free to select any other year and month of your choice to visualize.')
 
 # catch an error, just incase the user enters the date in the future.
+print(1234)
 print(month_dict[month])
 today = datetime.date.today()  # gets today's date
 user_seletion = datetime.time(year, int(month_dict[month]), 1)

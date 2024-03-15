@@ -52,7 +52,7 @@ study_feature = geemap.geojson_to_ee(json_data)
 st.write("""##### Select the gases to visualize""")
 gas = st.selectbox('', ['Concentrations of Carbon monoxide (CO)',
                         'Concentrations of water vapor', 
-                        'UV Aerosol Index ', 
+                        'UV Aerosol Index', 
                         'Concentrations of Formaldehyde', 
                         'Concentrations of total, tropospheric, and stratospheric nitrogen dioxide', 
                         'Concentrations of total atmospheric column ozone', 

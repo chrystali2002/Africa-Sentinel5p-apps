@@ -79,8 +79,8 @@ st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom
 gas_dict = {
   'Concentrations of Carbon monoxide (CO)': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 'band': 'CO_column_number_density', 'min': 0,
                                              'max': 0.05, 'layer_name': 'S5P CO', 'label': 'CO concentrations (mol/m^2)'},
-  'Concentrations of water vapor': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 'band': 'H2O_column_number_density', 'min': 0,
-                                    'max': 0.05, 'layer_name': 'S5P H20', 'label': 'H20 concentrations (mol/m^2)'},
+  'Concentrations of water vapor': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 'band': 'H2O_column_number_density', 'min': 0.01,
+                                    'max': 0.06., 'layer_name': 'S5P H20', 'label': 'H20 concentrations (mol/m^2)'},
   'UV Aerosol Index': {'col': 'COPERNICUS/S5P/NRTI/L3_AER_AI', 'band': 'absorbing_aerosol_index', 'min': -1,
                        'max': 2.0, 'layer_name': 'S5P Aerosol', 'label': 'UV Aerosol Index'},
   'Concentrations of Formaldehyde': {'col': 'COPERNICUS/S5P/NRTI/L3_HCHO', 'band': 'tropospheric_HCHO_column_number_density', 'min': 0,

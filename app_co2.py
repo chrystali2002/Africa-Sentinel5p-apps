@@ -1,5 +1,6 @@
 import ee
 import json
+import datetime
 import streamlit as st
 import geopandas as gpd
 import geemap.foliumap as geemap
@@ -66,12 +67,20 @@ with my_col2:
   month = st.selectbox('Select Month:', ['January', 'February', 'March', 'April', 'May', 'June', 'July',
                                          'August', 'September', 'October', 'November', 'December'])
 
-
+# creating dictionaries to store the information of the month in acceptable format
+month_dict = {'January': '1', 'February': '2', 'March': '3', 'April': '4', 'May': '5', 'June': '6',
+              'July': '7', 'August': '8', 'September': '9', 'October': '10', 'November': '11', 'December': '12'}
 # Visualization
 st.subheader(f"Interactive Map of showing the {gas} in Africa")
 st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom into the map and use the colorbar to get the \
          concentration value of the gases. Also, feel free to select any other year and month of your choice to visualize.')
 
+# catch an error, just incase the user enters the date in the future.
+today = datetime.date.today()  # gets today's date
+user_seletion = datetime.time(year, int(month_dict[month]), 1)
+
+if user_seletion > today :
+  st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\

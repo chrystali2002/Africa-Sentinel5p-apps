@@ -65,6 +65,7 @@ band_viz = {
   'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 }
 
+m.addLayer(study_feature, {}, 'Africa')
 m.addLayer(africa_col, band_viz, 'S5P CO')
 #m.add_geojson(africa_json,'Africa')
 m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',position='bottomright',
@@ -72,5 +73,4 @@ m.add_colorbar(band_viz, label='CO concentrations', layer_name='Colorbar',positi
 
 #m.add_colormap(vis_params=band_viz, label='CO concentrations',
 #               width=3, height=0.2)
-m.addLayer(study_feature, {}, 'Africa')
 m.to_streamlit(height=600, width=700)

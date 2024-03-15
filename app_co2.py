@@ -52,11 +52,20 @@ st.write("""##### Select the gases to visualize""")
 gas = st.selectbox('', ['Concentrations of Carbon monoxide (CO)',
                         'Concentrations of water vapor', 
                         'UV Aerosol Index ', 
-                        'Formaldehyde concentration', 
-                        'Total, tropospheric, and stratospheric nitrogen dioxide concentration', 
-                        'Total atmospheric column ozone concentration', 
-                        'Atmospheric sulphur dioxide (SO₂) concentration',
-                        'Atmospheric methane (CH₄) concentration'])
+                        'Concentrations of Formaldehyde', 
+                        'Concentrations of total, tropospheric, and stratospheric nitrogen dioxide', 
+                        'Concentrations of total atmospheric column ozone', 
+                        'Concentrations of  atmospheric sulphur dioxide (SO₂)',
+                        'Concentrations of atmospheric methane (CH₄)'])
+
+my_col1, my_col2 = st.columns(2)  # month, year column
+with my_col1:
+  year = st.slider('Select Year:', 2018, 2024, 2024, key='sl_1')
+
+with my_col2:
+  month = st.selectbox('Select Month:', ['January', 'February', 'March', 'April', 'May', 'June', 'July',
+                                         'August', 'September', 'October', 'November', 'December'])
+
 
 
 collection = ee.ImageCollection('COPERNICUS/S5P/NRTI/L3_CO')\

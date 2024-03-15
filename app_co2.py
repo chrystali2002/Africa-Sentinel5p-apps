@@ -11,7 +11,7 @@ import geemap as geemap_r
 st.set_page_config(page_title="Africa's CO2 emission Monitoring", page_icon='🛰️', layout='wide')
 
 # temporal header
-st.subheader('Live Monitoring of Air Quality in Africa')
+st.header('Live Monitoring of Air Quality in Africa', divider='rainbow')
 st.write("""
 This dataset provides near real-time high-resolution imagery of UV Aerosol Index, Concentrations of Carbon monoxide (CO) 
          and water vapor, Formaldehyde. Other important greenhouse gases such as the total, tropospheric, and stratospheric 
@@ -77,18 +77,26 @@ st.write(f'The Map shows the {gas} in {month} {year} for the Africa region. Zoom
 
 # creating a nexted dictionary that contains all the information for each of the gases
 gas_dict = {
-  'Concentrations of Carbon monoxide (CO)': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 
-                                             'band': 'CO_column_number_density',
-                                             'min': 0,
-                                             'max': 0.05,
-                                             'layer_name': 'S5P CO'},
-  'Concentrations of water vapor': {}, 
-  'UV Aerosol Index': {}, 
-  'Concentrations of Formaldehyde': {}, 
-  'Concentrations of total, tropospheric, and stratospheric nitrogen dioxide': {}, 
-  'Concentrations of total atmospheric column ozone': {}, 
-  'Concentrations of  atmospheric sulphur dioxide (SO₂)': {},
-  'Concentrations of atmospheric methane (CH₄)': {}
+  'Concentrations of Carbon monoxide (CO)': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 'band': 'CO_column_number_density', 'min': 0,
+                                             'max': 0.05, 'layer_name': 'S5P CO', 'label': 'CO concentrations (mol/m^2)'},
+  'Concentrations of water vapor': {'col': 'COPERNICUS/S5P/NRTI/L3_CO', 'band': 'H2O_column_number_density', 'min': 0,
+                                    'max': 0.05, 'layer_name': 'S5P H20', 'label': 'H20 concentrations (mol/m^2)'},
+  'UV Aerosol Index': {'col': 'COPERNICUS/S5P/NRTI/L3_AER_AI', 'band': 'absorbing_aerosol_index', 'min': -1,
+                       'max': 2.0, 'layer_name': 'S5P Aerosol', 'label': 'UV Aerosol Index'},
+  'Concentrations of Formaldehyde': {'col': 'COPERNICUS/S5P/NRTI/L3_HCHO', 'band': 'tropospheric_HCHO_column_number_density', 'min': 0,
+                                     'max': 0.0003, 'layer_name': 'S5P HCHO', 'label': 'Formaldehyde concentrations (mol/m^2)'},
+  'Concentrations of total, tropospheric, and stratospheric nitrogen dioxide': {'col': 'COPERNICUS/S5P/NRTI/L3_NO2', 
+                                                                                'band': 'NO2_column_number_density', 'min': 0,
+                                                                                'max': 0.0002, 'layer_name': 'S5P N02', 
+                                                                                'label': 'Total vertical column of NO2 (mol/m^2)'},
+  'Concentrations of total atmospheric column ozone': {'col': 'COPERNICUS/S5P/NRTI/L3_O3', 'band': 'O3_column_number_density', 'min': 0.12,
+                                                       'max': 0.15, 'layer_name': 'S5P O3', 'label': 'Total atmospheric column of O3 (mol/m^2)'}, 
+  'Concentrations of  atmospheric sulphur dioxide (SO₂)': {'col': 'COPERNICUS/S5P/NRTI/L3_SO2', 'band': 'SO2_column_number_density', 'min': 0,
+                                                  'max': 0.0005, 'layer_name': 'S5P SO2', 
+                                                  'label': 'SO2 vertical column density at ground level (mol/m^2)'},
+  'Concentrations of atmospheric methane (CH₄)': {'col': 'COPERNICUS/S5P/OFFL/L3_CH4', 'band': 'CH4_column_volume_mixing_ratio_dry_air', 
+                                                  'min': 1750, 'max': 1900, 'layer_name': 'S5P CH4', 
+                                                  'label': 'Dry air mixing ratio of methane, as parts-per-billion (Mol fraction)'}
 }
 
 
@@ -115,17 +123,17 @@ africa_col = collection.mean().clip(
 )
 
 band_viz = {
-  'min': 0,
-  'max': 0.05,
+  'min': gas_dict[gas]['min'],
+  'max': gas_dict[gas]['max'],
   'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
 }
 
 m.addLayer(study_feature, {}, 'Africa')
-m.addLayer(africa_col, band_viz, 'S5P CO')
-#m.add_geojson(africa_json,'Africa')
-m.add_colorbar(band_viz, label='CO concentrations (mol/m^2)', layer_name='Colorbar',position='bottomright',
+m.addLayer(africa_col, band_viz, gas_dict[gas]['layer_name'])
+
+m.add_colorbar(band_viz, label=gas_dict[gas]['label'], layer_name='Colorbar',position='bottomright',
                background_color='white', extend='both')
 
-#m.add_colormap(vis_params=band_viz, label='CO concentrations',
+#m.add_colormap(vis_params=band_viz, label=gas_dict[gas]['col'],
 #               width=3, height=0.2)
 m.to_streamlit(height=600, width=700)

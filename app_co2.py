@@ -105,8 +105,8 @@ gas_dict = {
 today = datetime.date.today()  # gets today's date
 user_seletion = datetime.date(year, int(month_dict[month]), 1)
 
-start_date = f'{year}-{month_dict[month]-{1}}'
-end_date = f'{year}-{month_dict[month]-{12}}'
+start_date = f'{year}-{month_dict[month]}-{1}'
+end_date = f'{year}-{month_dict[month]}-{12}'
 
 # if the date selected is at the beginning of the month
 

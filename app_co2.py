@@ -108,15 +108,15 @@ user_seletion = datetime.date(year, int(month_dict[month]), 1)
 start_date = f'{year}-{month_dict[month]}-{1}'
 end_date = f'{year}-{month_dict[month]}-{12}'
 
-# if the date selected is at the beginning of the month
+# if the month is at the beginning of the month, we will select the previous 12 days.
+if (today - user_seletion).days < 12:
+  start_date = str((today - datetime.timedelta(days=14)).date())
+  end_date = str((today - datetime.timedelta(days=12)).date())
 
 if user_seletion > today :
   st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')
 
 else:
-  #pass
-
-
   collection = ee.ImageCollection(gas_dict[gas]['col'])\
     .select(gas_dict[gas]['band'])\
     .filterDate(start_date, end_date)\

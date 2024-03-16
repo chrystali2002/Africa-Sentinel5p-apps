@@ -109,31 +109,31 @@ if user_seletion > today :
   st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')
 
 else:
-  pass
+  #pass
 
 
-collection = ee.ImageCollection(gas_dict[gas]['col'])\
-  .select(gas_dict[gas]['band'])\
-  .filterDate('2023-06-01', '2023-06-11')\
-  .filterBounds(study_feature)
+  collection = ee.ImageCollection(gas_dict[gas]['col'])\
+    .select(gas_dict[gas]['band'])\
+    .filterDate('2023-06-01', '2023-06-11')\
+    .filterBounds(study_feature)
 
-# clip the collection to the Africa plate
-africa_col = collection.mean().clip(
-  study_feature
-)
+  # clip the collection to the Africa plate
+  africa_col = collection.mean().clip(
+    study_feature
+  )
 
-band_viz = {
-  'min': gas_dict[gas]['min'],
-  'max': gas_dict[gas]['max'],
-  'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
-}
+  band_viz = {
+    'min': gas_dict[gas]['min'],
+    'max': gas_dict[gas]['max'],
+    'palette': ['black', 'blue', 'purple', 'cyan', 'green', 'yellow', 'red']
+  }
 
-m.addLayer(study_feature, {}, 'Africa')
-m.addLayer(africa_col, band_viz, gas_dict[gas]['layer_name'])
+  m.addLayer(study_feature, {}, 'Africa')
+  m.addLayer(africa_col, band_viz, gas_dict[gas]['layer_name'])
 
-m.add_colorbar(band_viz, label=gas_dict[gas]['label'], layer_name='Colorbar',position='bottomright',
-               background_color='white', extend='both')
+  m.add_colorbar(band_viz, label=gas_dict[gas]['label'], layer_name='Colorbar',position='bottomright',
+                background_color='white', extend='both')
 
-#m.add_colormap(vis_params=band_viz, label=gas_dict[gas]['col'],
-#               width=3, height=0.2)
-m.to_streamlit(height=600, width=700)
+  #m.add_colormap(vis_params=band_viz, label=gas_dict[gas]['col'],
+  #               width=3, height=0.2)
+  m.to_streamlit(height=600, width=700)

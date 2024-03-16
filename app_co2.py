@@ -105,6 +105,11 @@ gas_dict = {
 today = datetime.date.today()  # gets today's date
 user_seletion = datetime.date(year, int(month_dict[month]), 1)
 
+start_date = f'{year}-{month_dict[month]-1}'
+end_date = f'{year}-{month_dict[month]-12}'
+
+# if the date selected is at the beginning of the month
+
 if user_seletion > today :
   st.write('''### Ooops! I know you long for the future, but select current or past date 😉''')
 
@@ -114,7 +119,7 @@ else:
 
   collection = ee.ImageCollection(gas_dict[gas]['col'])\
     .select(gas_dict[gas]['band'])\
-    .filterDate('2023-06-01', '2023-06-11')\
+    .filterDate(start_date, end_date)\
     .filterBounds(study_feature)
 
   # clip the collection to the Africa plate
